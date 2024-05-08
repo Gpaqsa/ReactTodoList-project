@@ -57,16 +57,22 @@ const Container = () => {
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
-  return (
-    <div>
-      <Header />
-      <Body
-        notes={notes}
-        handleAddNote={handleAddNote}
-        handleDeleteNote={handleDeleteNote}
-      />
-    </div>
-  );
+    const filteredNotes = searchText
+      ? notes.filter((note) =>
+          note.text.toLowerCase().includes(searchText.toLowerCase())
+        )
+      : notes;
+
+    return (
+      <div>
+        <Header setSearchText={setSearchText} />
+        <Body
+          notes={notes}
+          handleAddNote={handleAddNote}
+          handleDeleteNote={handleDeleteNote}
+        />
+      </div>
+    );
 };
 
 export default Container;

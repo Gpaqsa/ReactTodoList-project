@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { CiSearch } from "react-icons/ci";
 import { MdOutlineDarkMode } from "react-icons/md";
 
-const Header = () => {
+const Header = ({ setSearchText }) => {
   const [selectedItem, setSelectedItem] = useState("");
 
   const handleItemSelection = (event) => {
     const selectedItemValue = event.target.value;
     setSelectedItem(selectedItemValue);
+  };
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearchInputChange = (event) => {
+    const searchText = event.target.value;
+    setSearchInput(searchText);
+    setSearchText(searchText);
   };
 
   return (
@@ -18,6 +25,8 @@ const Header = () => {
           <input
             type="text"
             placeholder="  Search note..."
+            value={searchInput}
+            onChange={handleSearchInputChange}
             className="border border-purple-800 rounded-md p-2 w-[750px] focus:outline-none focus:border-purple-800"
           />
           <CiSearch className="text-gray-500 text-4xl relative right-10" />
