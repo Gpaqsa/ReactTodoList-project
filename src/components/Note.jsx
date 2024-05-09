@@ -23,8 +23,10 @@ const Note = ({ id, text, handleDeleteNote }) => {
           className="mr-2 w-8 h-8"
           onChange={handleCheckboxChange}
         />
-        <span className="text-lg">{text}</span>
-        <span className="text-gray-500 ml-2">#{id}</span>
+        <span className="text-lg">
+          {text} #{id}
+        </span>
+        {/* <span className="text-gray-500 ml-2">#{id}</span> */}
       </label>
       <button className="text-red-500 hover:text-red-700">
         <img src={EditIcon} alt="Edit Icon" />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import Body from "./Body";
-const Container = () => {
+const Container = ({ toggleDarkMode }) => {
   const { nanoid } = require("nanoid");
 
   const [notes, setNotes] = useState([
@@ -57,22 +57,22 @@ const Container = () => {
     localStorage.setItem("notes-app-data", JSON.stringify(notes));
   }, [notes]);
 
-    const filteredNotes = searchText
-      ? notes.filter((note) =>
-          note.text.toLowerCase().includes(searchText.toLowerCase())
-        )
-      : notes;
+  const filteredNotes = searchText
+    ? notes.filter((note) =>
+        note.text.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : notes;
 
-    return (
-      <div>
-        <Header setSearchText={setSearchText} />
-        <Body
-          notes={notes}
-          handleAddNote={handleAddNote}
-          handleDeleteNote={handleDeleteNote}
-        />
-      </div>
-    );
+  return (
+    <div>
+      <Header setSearchText={setSearchText} toggleDarkMode={toggleDarkMode} />
+      <Body
+        notes={notes}
+        handleAddNote={handleAddNote}
+        handleDeleteNote={handleDeleteNote}
+      />
+    </div>
+  );
 };
 
 export default Container;

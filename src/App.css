@@ -1,3 +1,9 @@
 .App {
   text-align: center;
 }
+
+/* Dark mode styles */
+.dark .App {
+  background-color: black;
+  color: #ffffff;
+}

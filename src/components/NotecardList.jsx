@@ -14,6 +14,7 @@ const NotecardList = ({ notes, handleDeleteNote, handleAddNote }) => {
     <div className="notes-lists flex justify-center	 flex-col">
       {notes.map((note) => (
         <Note
+          key={note.id} // Add key prop
           id={note.id}
           text={note.text}
           handleDeleteNote={handleDeleteNote}
